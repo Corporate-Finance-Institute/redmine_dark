@@ -1,0 +1,32 @@
+# Copyright 2026 Corporate Finance Institute
+# SPDX-License-Identifier: GPL-2.0-only
+
+name: Compatibility
+
+on:
+  push:
+    branches: [main, feature/**]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  native-theme:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify minimal native-theme structure
+        run: sh test/theme_structure.sh
+      - name: Verify Redmine 7.0.1 discovers the theme
+        run: |
+          docker run --rm \
+            -e RAILS_ENV=test \
+            -e REDMINE_NO_DB_MIGRATE=1 \
+            -v "$PWD:/usr/src/redmine/themes/dark:ro" \
+            redmine:7.0.1 \
+            bundle exec sh -lc '
+              bundle exec rake db:migrate >/dev/null &&
+              bundle exec rails runner \
+                "Redmine::Themes.rescan; theme = Redmine::Themes.theme(\"dark\"); abort unless theme && theme.stylesheets.include?(\"application\")"
+            '
