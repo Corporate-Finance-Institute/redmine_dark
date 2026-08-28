@@ -6,10 +6,12 @@
  *
  * Modified by Corporate Finance Institute on 2026-08-28 to convert the
  * plugin's opt-in dark rules into an always-active native Redmine theme.
+ * The Dark theme inherits CFI's compact theme before applying this color
+ * layer, preserving the CFI font sizes, spacing, and issue density.
  * Distributed under GNU GPL v2; see ../LICENSE and ../NOTICE.md.
  */
 
-@import url(../../../stylesheets/application.css);
+@import url(/themes/cfi/application.css);
 
 html {
   background-color: #191919;
