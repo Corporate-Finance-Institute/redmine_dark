@@ -9,7 +9,7 @@ test ! -e init.rb
 test ! -d lib
 test ! -d assets
 
-grep -Fq '@import url(../../../stylesheets/application.css);' stylesheets/application.css
+grep -Fq '@import url(/themes/cfi/application.css);' stylesheets/application.css
 grep -Fq 'filter: invert(90%);' stylesheets/application.css
 
 if grep -Eq 'body\.dark|html\.dark|prefers-color-scheme|dark\.js|Redmine::Plugin' stylesheets/application.css README.md; then

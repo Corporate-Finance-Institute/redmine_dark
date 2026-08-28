@@ -17,7 +17,9 @@ Modifications made on 2026-08-28:
 - removed plugin registration, Rails hooks, injected assets, the JavaScript
   toggle, and cookie persistence; and
 - added Redmine 7.0.1 structure/discovery validation and native-theme
-  installation documentation.
+  installation documentation; and
+- changed the native Dark theme to inherit the installed CFI theme so CFI's
+  compact typography, spacing, and issue density remain authoritative.
 
 The original `LICENSE` file is retained byte-for-byte. This derivative remains
 distributed under GNU GPL v2, without warranty.

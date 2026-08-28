@@ -6,6 +6,11 @@ on Frédéric Aoustin's
 its inversion-based dark styling without the Rails plugin, runtime hook,
 JavaScript toggle, or cookie code.
 
+Dark inherits the installed CFI theme before applying its color layer. This
+preserves CFI's smaller fonts, compact content and issue padding, tighter
+headings, and attachment sizing. An installed native theme with the directory
+name `cfi` is therefore required.
+
 The repository root is the installable theme directory. The only runtime file
 is `stylesheets/application.css`.
 
@@ -20,6 +25,10 @@ REDMINE_ROOT/
       stylesheets/
         application.css
 ```
+
+Install the CFI theme alongside it as `themes/cfi`. Dark imports the CFI
+theme's `application.css` asset; it does not duplicate or fork those corporate
+density rules.
 
 For the official Docker image, mount or copy it to
 `/usr/src/redmine/themes/dark`. Restart Redmine so it rescans themes, then
@@ -47,4 +56,3 @@ changes. The original GNU GPL v2 license is retained unchanged.
 
 Original author: Frédéric Aoustin. Main upstream contributor: Ilia Lenskii.
 Corporate Finance Institute contributors maintain the native-theme fork.
-
