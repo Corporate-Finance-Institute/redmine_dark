@@ -1,49 +1,50 @@
-# Redmine Tags Plugin
+# Redmine Dark Theme
 
+A native Redmine theme maintained by Corporate Finance Institute. It is based
+on Frédéric Aoustin's
+[redmine_dark](https://github.com/fraoustin/redmine_dark) plugin and retains
+its inversion-based dark styling without the Rails plugin, runtime hook,
+JavaScript toggle, or cookie code.
 
-## Plugin installation
+The repository root is the installable theme directory. The only runtime file
+is `stylesheets/application.css`.
 
-1. Copy the plugin directory into the vendor/plugins directory
-2. Restart Redmine
+## Install
 
-with a Dockerfile
+Copy or clone this repository as `dark` under Redmine's `themes` directory:
 
+```text
+REDMINE_ROOT/
+  themes/
+    dark/
+      stylesheets/
+        application.css
 ```
-   FROM redmine
-   WORKDIR /usr/src/redmine/plugins
-   RUN git clone https://github.com/fraoustin/redmine_dark.git
-   WORKDIR /usr/src/redmine/
-```
-if you have a problem, you can test this
 
-```
-RAILS_ENV=production bundle exec rake assets:precompile
-```
+For the official Docker image, mount or copy it to
+`/usr/src/redmine/themes/dark`. Restart Redmine so it rescans themes, then
+select **Dark** in **Administration → Settings → Display → Theme**. If the
+deployment uses precompiled assets, run `assets:precompile` before restarting.
 
-## Usage
+Unlike the original plugin, this theme is deliberately global when selected.
+It does not inject a “dark mode” link or persist a per-browser cookie.
 
-you can selected dark mode with click on "dark mode" top rigth (after connect)
+## Screenshots
 
-![custom-field](screenshots/darkmode_selected.png "My page")
+Default Redmine:
 
-with default theme
+![Dark Redmine](screenshots/darkmode1.png "Dark Redmine")
 
-![custom-field](screenshots/darkmode1.png "My page")
+RTMaterial with redmine_indicator:
 
-with RTmaterial Theme, redmine_indicator plugin
+![Dark RTMaterial](screenshots/darkmode2.png "Dark RTMaterial")
 
-![custom-field](screenshots/darkmode2.png "My page")
+## Provenance and license
 
-## License
+The conversion is based on upstream `main` commit
+`8026957ae906a6299e2aaecb26c1b8619580881c`. See `NOTICE.md` for the precise
+changes. The original GNU GPL v2 license is retained unchanged.
 
-This plugin is released under the GPLv2.
-
-## Authors
-
-Frédéric Aoustin
-
-Main contributors:
-
-- Ilia Lenskii
-
+Original author: Frédéric Aoustin. Main upstream contributor: Ilia Lenskii.
+Corporate Finance Institute contributors maintain the native-theme fork.
 
